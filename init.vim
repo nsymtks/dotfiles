@@ -464,6 +464,8 @@ function! s:replace_emojis() range
 endfunction
 command! -range EmojiReplace <line1>,<line2>call s:replace_emojis()
 
+set completefunc=emoji#complete
+
 " ----------------------------------------------------------------------------
 " deoplete
 " ----------------------------------------------------------------------------
