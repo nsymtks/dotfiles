@@ -39,17 +39,6 @@ Plug 'Shougo/vimproc.vim', { 'dir': g:plug_dir.'/vimproc.vim', 'do': 'make' }
 Plug 'junegunn/fzf'
 Plug 'junegunn/fzf.vim'
 
-Plug 'scrooloose/nerdtree', { 'on': 'NERDTreeToggle' }
-augroup nerd_loader
-  autocmd!
-  autocmd VimEnter * silent! autocmd! FileExplorer
-  autocmd BufEnter,BufNew *
-        \  if isdirectory(expand('<amatch>'))
-        \|   call plug#load('nerdtree')
-        \|   execute 'autocmd! nerd_loader'
-        \| endif
-augroup END
-
 " Status line
 Plug 'itchyny/lightline.vim',
 
@@ -236,9 +225,9 @@ nnoremap < gT
 nnoremap > gt
 
 " ----------------------------------------------------------------------------
-" <F10> | NERD Tree
+" <F10> | vimfiler
 " ----------------------------------------------------------------------------
-nnoremap <F10> :NERDTreeToggle<cr>
+nnoremap <F10> <ESC>:<C-u>VimFilerExplorer -winwidth=40<CR>
 
 " ----------------------------------------------------------------------------
 " <F9> | Tagbar
@@ -411,6 +400,15 @@ endfunction "}}}
 " tagbar
 " ----------------------------------------------------------------------------
 let g:tagbar_width = 35 "(default 40)
+
+" ----------------------------------------------------------------------------
+" vimfiler
+" ----------------------------------------------------------------------------
+let g:vimfiler_as_default_explorer        = 1
+let g:vimfiler_safe_mode_by_default       = 0
+let g:vimfiler_force_overwrite_statusline = 0
+
+autocmd FileType vimfiler nmap <buffer> <CR> <Plug>(vimfiler_expand_or_edit)
 
 " ----------------------------------------------------------------------------
 " vim-fugitive
