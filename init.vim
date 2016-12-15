@@ -32,7 +32,7 @@ let $GIT_SSL_NO_VERIFY = 'true'
 " <3 packages
 Plug 'Shougo/unite.vim'
 Plug 'Shougo/unite-outline'
-Plug 'Shougo/deoplete.nvim'
+Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
 Plug 'Shougo/neomru.vim'
 Plug 'Shougo/vimfiler',    { 'on': ['VimFiler', 'VimFilerExplorer', 'Edit', 'Read', 'Source', 'Write' ] }
 Plug 'Shougo/vimproc.vim', { 'dir': g:plug_dir.'/vimproc.vim', 'do': 'make' }
