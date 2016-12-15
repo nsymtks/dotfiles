@@ -61,7 +61,7 @@ Plug 'junegunn/vim-emoji'
 Plug 'alpaca-tc/alpaca_tags', { 'for': ['php', 'js'] }
 Plug 'mattn/webapi-vim'
 Plug 'tsuyoshiwada/slack-memo-vim'
-Plug 'pbogut/deoplete-padawan'
+""Plug 'pbogut/deoplete-padawan'
 
 " Programming
 Plug 'othree/yajs.vim'
@@ -526,9 +526,9 @@ nnoremap sml :SlackMemoList<CR>
 " ----------------------------------------------------------------------------
 "  deoplete-dadawan
 " ----------------------------------------------------------------------------
-command! StartPadawan call deoplete#sources#padawan#StartServer()
-command! StopPadawan call deoplete#sources#padawan#StopServer()
-command! RestartPadawan call deoplete#sources#padawan#RestartServer()
+""command! StartPadawan call deoplete#sources#padawan#StartServer()
+""command! StopPadawan call deoplete#sources#padawan#StopServer()
+""command! RestartPadawan call deoplete#sources#padawan#RestartServer()
 
 " }}}
 " ============================================================================
