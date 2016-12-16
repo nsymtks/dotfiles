@@ -12,7 +12,7 @@
 
 let s:darwin = has('mac')
 
-let g:nvim_dir = '~/.config/nvim'
+let g:nvim_dir = expand('~/.config/nvim')
 let g:plug_dir = g:nvim_dir.'/plugged'
 
 " ============================================================================
