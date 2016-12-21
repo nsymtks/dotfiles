@@ -487,6 +487,12 @@ let g:deoplete#omni_patterns.gitcommit = ''
 
 inoremap <silent><expr> <Tab> pumvisible() ? "\<C-n>" : deoplete#mappings#manual_complete()
 
+" 補完する際にプレビューを表示しない
+set completeopt-=preview
+
+" 補完を確定した際にプレビューを閉じる
+"autocmd InsertLeave,CompleteDone * if pumvisible() == 0 | pclose | endif
+
 " ----------------------------------------------------------------------------
 " choosewin
 " ----------------------------------------------------------------------------
