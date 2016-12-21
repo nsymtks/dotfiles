@@ -39,11 +39,17 @@ Plug 'Shougo/vimproc.vim', { 'dir': g:plug_dir.'/vimproc.vim', 'do': 'make' }
 Plug 'junegunn/fzf'
 Plug 'junegunn/fzf.vim'
 
+" Filer
+Plug 'scrooloose/nerdtree', { 'on': 'NERDTreeToggle' }
+Plug 'Xuyuanp/nerdtree-git-plugin'
+
 " Status line
-Plug 'itchyny/lightline.vim',
+Plug 'vim-airline/vim-airline'
+Plug 'vim-airline/vim-airline-themes'
 
 " Color scheme
 Plug 'junegunn/seoul256.vim'
+Plug 'mhartington/oceanic-next'
 
 " Git
 Plug 'tpope/vim-fugitive'
@@ -72,6 +78,8 @@ Plug 'cespare/vim-toml', { 'for': 'toml' }
 
 " Misc
 Plug 'vim-jp/vimdoc-ja', { 'for': 'help' }
+Plug 'mhinz/vim-sayonara', { 'on': 'Sayonara' }
+Plug 'ryanoasis/vim-devicons'
 
 call plug#end()
 endif
@@ -225,9 +233,10 @@ nnoremap < gT
 nnoremap > gt
 
 " ----------------------------------------------------------------------------
-" <F1> | vimfiler
+" <F1> | vimfiler/NERDTree
 " ----------------------------------------------------------------------------
-nnoremap <F1> <ESC>:<C-u>VimFilerExplorer -winwidth=40<CR>
+"nnoremap <F1> <ESC>:<C-u>VimFilerExplorer -winwidth=40<CR>
+nnoremap <F1> :NERDTreeToggle<CR>
 
 " ----------------------------------------------------------------------------
 " <F2> | fzf
@@ -290,15 +299,29 @@ command! Todo call s:todo()
 
 " }}}
 " ============================================================================
-" Plugins {{{
+" Color Scheme {{{
 " ============================================================================
 
 " ----------------------------------------------------------------------------
 " seoul256
 " ----------------------------------------------------------------------------
-let g:seoul256_background = 233
-let g:seoul256_light_background = 256
-colo seoul256
+"colo seoul256
+"
+"let g:seoul256_background = 233
+"let g:seoul256_light_background = 256
+
+" ----------------------------------------------------------------------------
+" OceanicNext
+" ----------------------------------------------------------------------------
+colo OceanicNext
+
+let g:oceanic_next_terminal_italic = 1
+let g:oceanic_next_terminal_bold = 1
+
+" }}}
+" ============================================================================
+" Plugins {{{
+" ============================================================================
 
 " ----------------------------------------------------------------------------
 " Unite.vim
@@ -344,67 +367,93 @@ endif
 " ----------------------------------------------------------------------------
 " lightline
 " ----------------------------------------------------------------------------
-let g:lightline = {
-        \ 'colorscheme': 'wombat',
-        \ 'active': {
-        \   'left': [ [ 'mode', 'paste' ],
-        \             [ 'fugitive', 'filename' ] ]
-        \ },
-        \ 'component_function': {
-        \   'fugitive': 'LightLineFugitive',
-        \   'readonly': 'LightLineReadonly',
-        \   'modified': 'LightLineModified',
-        \   'filename': 'LightLineFilename',
-        \   'tabtitle': 'LightLineTabTitle'
-        \ },
-        \ 'separator': { 'left': '⮀', 'right': '⮂' },
-        \ 'subseparator': { 'left': '⮁', 'right': '⮃' }
-        \ }
+""let g:lightline = {
+""        \ 'colorscheme': 'wombat',
+""        \ 'active': {
+""        \   'left': [ [ 'mode', 'paste' ],
+""        \             [ 'fugitive', 'filename' ] ]
+""        \ },
+""        \ 'component_function': {
+""        \   'fugitive': 'LightLineFugitive',
+""        \   'readonly': 'LightLineReadonly',
+""        \   'modified': 'LightLineModified',
+""        \   'filename': 'LightLineFilename',
+""        \   'tabtitle': 'LightLineTabTitle',
+""        \   'filetype': 'LightLineFiletype',
+""        \   'fileformat': 'LightLineFileformat'
+""        \ },
+""        \ 'separator': { 'left': '⮀', 'right': '⮂' },
+""        \ 'subseparator': { 'left': '⮁', 'right': '⮃' }
+""        \ }
+""
+""let g:lightline.tabline = {
+""        \ 'left': [ [ 'tabtitle' ], [ 'tabs' ] ],
+""        \ 'right': [ [ 'close' ] ]
+""        \ }
+""
+""function! LightLineModified() "{{{
+""    if &filetype == "help"
+""        return ""
+""    elseif &modified
+""        return "+"
+""    elseif &modifiable
+""        return ""
+""    else
+""        return ""
+""    endif
+""endfunction "}}}
+""
+""function! LightLineReadonly() "{{{
+""    if &filetype == "help"
+""        return ""
+""    elseif &readonly
+""        return "🔏 "
+""    else
+""        return ""
+""    endif
+""endfunction "}}}
+""
+""function! LightLineFugitive() "{{{
+""    if exists("*fugitive#head")
+""        let _ = fugitive#head()
+""        return strlen(_) ? '⭠ '._ : ''
+""    endif
+""    return ''
+""endfunction "}}}
+""
+""function! LightLineFilename() "{{{
+""    return ('' != LightLineReadonly() ? LightLineReadonly() . ' ' : '') .
+""                \ ('' != expand('%:t') ? expand('%:t') : '[No Name]') .
+""                \ ('' != LightLineModified() ? ' ' . LightLineModified() : '')
+""endfunction "}}}
+""
+""function! LightLineTabTitle() "{{{
+""    return "tabs"
+""endfunction "}}}
+""
+""function! LightLineFiletype() "{{{
+""  return winwidth(0) > 70 ? (strlen(&filetype) ? &filetype . ' ' . WebDevIconsGetFileTypeSymbol() : 'no ft') : ''
+""endfunction "}}}
+""
+""function! LightLineFileformat() "{{{
+""  return winwidth(0) > 70 ? (&fileformat . ' ' . WebDevIconsGetFileFormatSymbol()) : ''
+""endfunction "}}}
 
-let g:lightline.tabline = {
-        \ 'left': [ [ 'tabtitle' ], [ 'tabs' ] ],
-        \ 'right': [ [ 'close' ] ]
-        \ }
+" ----------------------------------------------------------------------------
+" airline
+" ----------------------------------------------------------------------------
+let g:airline#extensions#tabline#enabled = 1
+let g:airline#extensions#tabline#show_buffers = 0
+let g:airline#extensions#tabline#fnamemod = ':t'
+let g:airline#extensions#tabline#show_tab_nr = 1
+let g:airline#extensions#tabline#tab_nr_type = 1
+let g:airline_skip_empty_sections = 1
+let g:airline_powerline_fonts = 1
+let g:airline_theme='oceanicnext'
 
-function! LightLineModified() "{{{
-    if &filetype == "help"
-        return ""
-    elseif &modified
-        return "+"
-    elseif &modifiable
-        return ""
-    else
-        return ""
-    endif
-endfunction "}}}
+cnoreabbrev <expr> x getcmdtype() == ":" && getcmdline() == 'x' ? 'Sayonara' : 'x'
 
-function! LightLineReadonly() "{{{
-    if &filetype == "help"
-        return ""
-    elseif &readonly
-        return "🔏 "
-    else
-        return ""
-    endif
-endfunction "}}}
-
-function! LightLineFugitive() "{{{
-    if exists("*fugitive#head")
-        let _ = fugitive#head()
-        return strlen(_) ? '⭠ '._ : ''
-    endif
-    return ''
-endfunction "}}}
-
-function! LightLineFilename() "{{{
-    return ('' != LightLineReadonly() ? LightLineReadonly() . ' ' : '') .
-                \ ('' != expand('%:t') ? expand('%:t') : '[No Name]') .
-                \ ('' != LightLineModified() ? ' ' . LightLineModified() : '')
-endfunction "}}}
-
-function! LightLineTabTitle() "{{{
-    return "tabs"
-endfunction "}}}
+let g:airline#extensions#tabline#buffer_idx_mode = 1
 
 " ----------------------------------------------------------------------------
 " tagbar
@@ -414,11 +463,35 @@ let g:tagbar_width = 35 "(default 40)
 " ----------------------------------------------------------------------------
 " vimfiler
 " ----------------------------------------------------------------------------
-let g:vimfiler_as_default_explorer        = 1
-let g:vimfiler_safe_mode_by_default       = 0
-let g:vimfiler_force_overwrite_statusline = 0
+""let g:vimfiler_as_default_explorer        = 1
+""let g:vimfiler_safe_mode_by_default       = 0
+""let g:vimfiler_force_overwrite_statusline = 0
+""
+""let g:webdevicons_enable = 1
+""let g:webdevicons_enable_vimfiler         = 0
+""
+""autocmd FileType vimfiler nmap <buffer> <CR> <Plug>(vimfiler_expand_or_edit)
 
-autocmd FileType vimfiler nmap <buffer> <CR> <Plug>(vimfiler_expand_or_edit)
+" ----------------------------------------------------------------------------
+" NERDTree
+" ----------------------------------------------------------------------------
+let NERDTreeMapJumpFirstChild = ''
+
+let g:vimfiler_tree_leaf_icon = ' '
+let g:vimfiler_tree_opened_icon = '▾'
+let g:vimfiler_tree_closed_icon = '▸'
+let g:vimfiler_file_icon = ' '
+let g:vimfiler_marked_file_icon = '*'
+
+augroup nerd_loader
+  autocmd!
+  autocmd VimEnter * silent! autocmd! FileExplorer
+  autocmd BufEnter,BufNew *
+        \  if isdirectory(expand('<amatch>'))
+        \|   call plug#load('nerdtree')
+        \|   execute 'autocmd! nerd_loader'
+        \| endif
+augroup END
 
 " ----------------------------------------------------------------------------
 " vim-fugitive
