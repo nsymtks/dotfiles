@@ -182,8 +182,6 @@ nnoremap <silent> [unite]r <ESC>:<C-u>Unite -buffer-name=register register<CR>
 nnoremap <silent> [unite]g <ESC>:<C-u>Unite grep:. -buffer-name=search-buffer<CR>
 " ブックマーク一覧
 nnoremap <silent> [unite]b <ESC>:<C-u>Unite bookmark<CR>
-" 非同期検索
-nnoremap <silent> [unite]a <ESC>:<C-u>Unite file_rec/async:!<CR>
 
 " sourcesを「今開いているファイルのディレクトリ」とする
 noremap :uff :<C-u>UniteWithBufferDir file -buffer-name=file<CR>
