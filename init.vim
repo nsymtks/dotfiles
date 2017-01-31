@@ -182,12 +182,12 @@ nnoremap <silent> [unite]b <ESC>:<C-u>Unite buffer<CR>
 nnoremap <silent> [unite]r <ESC>:<C-u>Unite -buffer-name=register register<CR>
 " Unite grep
 nnoremap <silent> [unite]g <ESC>:<C-u>Unite grep:. -buffer-name=search-buffer<CR>
+" Unite grepの結果の再呼び出し
+nnoremap <silent> [unite]h <ESC>:<C-u>UniteResume search-buffer<CR>
 " ブックマーク追加
 nnoremap <silent> [unite]a <ESC>:<C-u>UniteBookmarkAdd<CR>
 " ブックマーク一覧
 nnoremap <silent> [unite]s <ESC>:<C-u>Unite bookmark<CR>
-" レジューム
-nnoremap <silent> [unite]j <ESC>:<C-u>UniteResume<CR>
 
 " sourcesを「今開いているファイルのディレクトリ」とする
 noremap :uff :<C-u>UniteWithBufferDir file -buffer-name=file<CR>
