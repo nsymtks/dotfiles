@@ -669,7 +669,7 @@ omap <leader><tab> <plug>(fzf-maps-o)
 
 command! Plugs call fzf#run({
   \ 'source':  map(sort(keys(g:plugs)), 'g:plug_home."/".v:val'),
-  \ 'options': '--delimiter / --nth -1',
+  \ 'options': '--ansi --multi --delimiter / --nth -1'
   \ 'down':    '~40%',
   \ 'sink':    'Explore'})
 
