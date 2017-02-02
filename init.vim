@@ -182,15 +182,23 @@ nnoremap <silent> [unite]b <ESC>:<C-u>Unite buffer<CR>
 nnoremap <silent> [unite]r <ESC>:<C-u>Unite -buffer-name=register register<CR>
 " Unite grep
 nnoremap <silent> [unite]g <ESC>:<C-u>Unite grep:. -buffer-name=search-buffer<CR>
+" Unite cursor word grep
+nnoremap <silent> [unite]w <ESC>:<C-u>Unite grep:. -buffer-name=search-buffer<CR><C-R><C-W><CR>
 " Unite grepの結果の再呼び出し
 nnoremap <silent> [unite]h <ESC>:<C-u>UniteResume search-buffer<CR>
 " ブックマーク追加
-nnoremap <silent> [unite]a <ESC>:<C-u>UniteBookmarkAdd<CR>
+nnoremap <silent> [unite]b <ESC>:<C-u>UniteBookmarkAdd<CR>
 " ブックマーク一覧
-nnoremap <silent> [unite]s <ESC>:<C-u>Unite bookmark<CR>
+nnoremap <silent> [unite]B <ESC>:<C-u>Unite bookmark<CR>
 
 " sourcesを「今開いているファイルのディレクトリ」とする
 noremap :uff :<C-u>UniteWithBufferDir file -buffer-name=file<CR>
+
+if executable('ag')
+  let g:unite_source_grep_command = 'ag'
+  let g:unite_source_grep_default_opts = '--nogroup --nocolor --column'
+  let g:unite_source_grep_recursive_opt = ''
+endif
 
 " ----------------------------------------------------------------------------
 " fzf
