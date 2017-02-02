@@ -59,7 +59,7 @@ Plug 'mhinz/vim-signify'
 Plug 'rhysd/github-complete.vim'
 
 " Edit
-Plug 'majutsushi/tagbar', { 'on': 'TagbarToggle' }
+Plug 'majutsushi/tagbar'
 Plug 't9md/vim-choosewin'
 Plug 'terryma/vim-multiple-cursors'
 Plug 'editorconfig/editorconfig-vim'
