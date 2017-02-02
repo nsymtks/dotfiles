@@ -243,6 +243,7 @@ nnoremap <C-]> g<C-]>
 nnoremap T <ESC>:tabnew<CR>
 nnoremap < gT
 nnoremap > gt
+nnoremap <space>q <ESC>:q<CR>
 
 " ----------------------------------------------------------------------------
 " <F1> | vimfiler/NERDTree
