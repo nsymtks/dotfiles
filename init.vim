@@ -75,6 +75,7 @@ Plug 'maxmellon/vim-jsx-pretty'
 Plug 'pangloss/vim-javascript'
 Plug 'othree/html5.vim', { 'for': 'html' }
 Plug 'cespare/vim-toml', { 'for': 'toml' }
+Plug 'tomtom/tcomment_vim'
 
 " Misc
 Plug 'vim-jp/vimdoc-ja', { 'for': 'help' }
