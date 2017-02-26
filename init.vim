@@ -67,7 +67,6 @@ Plug 'junegunn/vim-emoji'
 Plug 'alpaca-tc/alpaca_tags', { 'for': ['php', 'js'] }
 Plug 'mattn/webapi-vim'
 Plug 'tsuyoshiwada/slack-memo-vim'
-""Plug 'pbogut/deoplete-padawan'
 Plug 'joonty/vdebug'
 
 " Programming
@@ -632,13 +631,6 @@ let g:vdebug_keymap = {
 \    "eval_under_cursor" : "<F9>",
 \    "eval_visual" : "<Leader>e"
 \}
-
-" ----------------------------------------------------------------------------
-"  deoplete-dadawan
-" ----------------------------------------------------------------------------
-""command! StartPadawan call deoplete#sources#padawan#StartServer()
-""command! StopPadawan call deoplete#sources#padawan#StopServer()
-""command! RestartPadawan call deoplete#sources#padawan#RestartServer()
 
 " }}}
 " ============================================================================
