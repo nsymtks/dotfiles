@@ -1,5 +1,5 @@
 # Vim-like keybind as default
-bindkey -v
+#bindkey -v
 # Vim-like escaping jj keybind
 bindkey -M viins 'jj' vi-cmd-mode
 
