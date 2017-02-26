@@ -68,6 +68,7 @@ Plug 'alpaca-tc/alpaca_tags', { 'for': ['php', 'js'] }
 Plug 'mattn/webapi-vim'
 Plug 'tsuyoshiwada/slack-memo-vim'
 ""Plug 'pbogut/deoplete-padawan'
+Plug 'joonty/vdebug'
 
 " Programming
 Plug 'othree/yajs.vim'
@@ -614,6 +615,23 @@ endif
 
 nnoremap smp :SlackMemoPost<CR>
 nnoremap sml :SlackMemoList<CR>
+
+" ----------------------------------------------------------------------------
+"  vdebug
+" ----------------------------------------------------------------------------
+let g:vdebug_keymap = {
+\    "run" : "<F5>",
+\    "run_to_cursor" : "<F6>",
+\    "step_over" : "<F10>",
+\    "step_into" : "<F11>",
+\    "step_out" : "<F12>",
+\    "close" : "<F3>",
+\    "detach" : "<F4>",
+\    "set_breakpoint" : "<F7>",
+\    "get_context" : "<F8>",
+\    "eval_under_cursor" : "<F9>",
+\    "eval_visual" : "<Leader>e"
+\}
 
 " ----------------------------------------------------------------------------
 "  deoplete-dadawan
