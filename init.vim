@@ -66,7 +66,6 @@ Plug 'editorconfig/editorconfig-vim'
 Plug 'junegunn/vim-emoji'
 Plug 'alpaca-tc/alpaca_tags', { 'for': ['php', 'js'] }
 Plug 'mattn/webapi-vim'
-Plug 'tsuyoshiwada/slack-memo-vim'
 Plug 'joonty/vdebug'
 
 " Programming
@@ -604,16 +603,6 @@ augroup END
 " ----------------------------------------------------------------------------
 let g:EditorConfig_exec_path = '/usr/local/bin/editorconfig'
 let g:EditorConfig_core_mode = 'external_command'
-
-" ----------------------------------------------------------------------------
-"  slack-memo.vim
-" ----------------------------------------------------------------------------
-if filereadable(expand('~/.vim.local.slack-memo'))
-    source ~/.vim.local.slack-memo
-endif
-
-nnoremap smp :SlackMemoPost<CR>
-nnoremap sml :SlackMemoList<CR>
 
 " ----------------------------------------------------------------------------
 "  vdebug
