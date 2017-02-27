@@ -531,6 +531,9 @@ let g:EditorConfig_core_mode = 'external_command'
 " ----------------------------------------------------------------------------
 "  vdebug
 " ----------------------------------------------------------------------------
+
+let g:vdebug_force_ascii = 1
+
 let g:vdebug_keymap = {
 \    "run" : "<F5>",
 \    "run_to_cursor" : "<F6>",
